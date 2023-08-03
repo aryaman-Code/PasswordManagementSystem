@@ -52,7 +52,8 @@ function checkUserName(req,res,next){
 
 router.get('/', checkLoginUser, function(req, res, next) {
     var loginUser=localStorage.getItem('loginUser');
-    console.log(loginUser);
+   console.log("loginUser");
+   
     res.render('dashboard', { title: 'Password Management System' ,msg:'', loginUser:loginUser});
   });
 

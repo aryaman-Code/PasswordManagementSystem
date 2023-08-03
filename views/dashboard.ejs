@@ -16,10 +16,10 @@
     <nav class="navbar navbar-inverse">
         <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Password Management System</a>
+                    <a class="navbar-brand">Password Management System</a>
                 </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/dashboard">Home</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Password Category</a>
                     <ul class="dropdown-menu">
                         <li><a href="/addNewCategory" class="dropdown-item"> Add New Category</a></li>
@@ -37,7 +37,7 @@
                 </a></li>
           </ul>
 
-          <div class="navbar-header" style="float: right;"><a class="navbar-brand" href="#">Logged In As : <% if(loginUser != '') { %> <%= loginUser %> <% } %></a></div>
+          <div class="navbar-header" style="float: right;"><a class="navbar-brand" >Logged In As : <% if(loginUser != '') { %> <%= loginUser %> <% } %></a></div>
 
         </div>
       </nav>

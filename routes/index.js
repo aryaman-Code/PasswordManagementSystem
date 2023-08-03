@@ -66,13 +66,19 @@ router.post('/', function(req, res, next) {
   var password=req.body.password;
 
   var checkUser=userModule.findOne({username:uname});
-  
+//   console.log(checkUser)
   checkUser.exec((err,data)=>{
     if(err) throw err;
+    if(data==null)
+    {
+      res.render('index', { title: 'Password Management System',msg:'Invalid Username' });
+    }
+    else
+    {
     var getUserID=data._id;
     var getPassword=data.password;
-
-    console.log(getPassword);
+    console.log("password1",password);
+    console.log("getPassword",getPassword);
     if(bcrypt.compareSync(password,getPassword)){
       var token=jwt.sign({userID: getUserID},'loginToken');
       localStorage.setItem('userToken',token);
@@ -80,8 +86,9 @@ router.post('/', function(req, res, next) {
       res.redirect('/dashboard');
     }
     else{
-      res.render('index', { title: 'Password Management System',msg:'Invalid UserName and Password' });
+res.render('index', { title: 'Password Management System',msg:'Invalid Password' });
     }
+  }
   })
 
 });
@@ -104,7 +111,7 @@ router.post('/signup',checkEmail,checkUserName, function(req, res, next) {
 
   if(password != confpassword){
     res.render('signup', { title: 'Password Management System',msg:'Password Does not Match'});
-  }
+  }      
   else{
     password=bcrypt.hashSync(password,10);
     var userDetail=new userModule({
@@ -127,3 +134,10 @@ router.get('/logout', function(req, res, next) {
 });
 
 module.exports = router;
+
+/*
+ 
+jwt
+localstorage
+req.body.uname
+*/

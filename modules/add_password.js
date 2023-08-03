@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-mongoose.connect('mongodb://localhost:27017/PMS',{useNewUrlParser:true,useCreateIndex:true, useUnifiedTopology: true });
+mongoose.connect('mongodb://127.0.0.1:27017/PMS',{useNewUrlParser:true,useCreateIndex:true, useUnifiedTopology: true });
 var conn=mongoose.Collection;
 var passSchema=new mongoose.Schema({
      password_category : {

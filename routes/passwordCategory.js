@@ -54,6 +54,7 @@ router.get('/', checkLoginUser, function(req, res, next) {
     var loginUser=localStorage.getItem('loginUser');
     getPassCat.exec(function(err,data){
       if(err) throw err;
+      console.log(data)
       res.render('password_category', { title: 'Password Management System', loginUser:loginUser, records:data });
     });
 });
@@ -85,7 +86,7 @@ router.get('/', checkLoginUser, function(req, res, next) {
     var updatePassCat=passCatModel.findByIdAndUpdate(passCatID,{password_category : passCatName});
     updatePassCat.exec(function(err,data){
       if(err) throw err;
-      res.redirect('/');
+      res.redirect('/passwordCategory');
     });
   });
 
